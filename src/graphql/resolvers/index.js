@@ -1,12 +1,4 @@
-import { productQueries, productMutations } from './product'
+import { merge } from 'lodash'
+import productResolvers from './product'
 
-const resolvers = {
-    Query: {
-        ...productQueries,
-    },
-    Mutation: {
-        ...productMutations,
-    },
-}
-
-export default resolvers
+export const resolvers = merge(productResolvers)
