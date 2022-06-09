@@ -1,0 +1,18 @@
+# Types
+type Product implements Timestamps {
+    id: ID!
+    name: String!
+
+    # Interface required
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+# Inputs
+input ProductCreateInput {
+    name: String!
+}
+
+input ProductUpdateInput {
+    name: String
+}

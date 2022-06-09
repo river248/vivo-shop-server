@@ -2,9 +2,10 @@ import { ApolloServer } from 'apollo-server-express'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import express from 'express'
 import http from 'http'
-import { connectDB } from './config/mongoose'
+import connectDB from './config/mongoose'
+import schema from './graphql/schema'
 
-connectDB
+connectDB()
     .then(() => console.log('Connected successfully to database server!'))
     .then(async () => await startApolloServer())
     .catch((error) => {
@@ -17,8 +18,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
     const httpServer = http.createServer(app)
 
     const server = new ApolloServer({
-        typeDefs,
-        resolvers,
+        schema,
         csrfPrevention: true,
         plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
     })
