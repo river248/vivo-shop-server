@@ -1,0 +1,14 @@
+# Custom Scalars
+scalar Date
+
+type Query {
+    # products
+    products: [Product]!
+    product(id: ID!): Product
+}
+
+type Mutation {
+    # products
+    createProduct(product: ProductCreateInput!): Product!
+    updateProduct(id: ID!, product: ProductUpdateInput!): Product!
+}
