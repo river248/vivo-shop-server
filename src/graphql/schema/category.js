@@ -10,6 +10,7 @@ export const CategoryTypeDefs = gql`
 
     type Query {
         categories: [Category]
+        listCategories(type: String!): [Category]
         category(id: ID!): Category
     }
 
