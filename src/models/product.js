@@ -8,6 +8,7 @@ const productSchema = new Schema(
         name: String,
         categoryID: Schema.Types.ObjectId,
         thumbnail: String,
+        status: { type: String, default: 'NOR' },
         description: String,
         price: Number,
         sizes: [sizeChema],
@@ -23,15 +24,13 @@ const createNew = async (data) => {
     return await product.save()
 }
 
-const findAllProducts = async () => await Product.find()
+const findAllProducts = async (condition = null) =>
+    condition === null ? await Product.find() : await Product.find(condition)
 
 const findProductById = async (id) => await Product.findById(id)
-
-const findProductsByCategory = async (categoryID) => await Product.find({ categoryID: categoryID })
 
 export const ProductModel = {
     createNew,
     findAllProducts,
     findProductById,
-    findProductsByCategory,
 }

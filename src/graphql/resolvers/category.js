@@ -9,7 +9,7 @@ const CategoryResolvers = {
     },
 
     Category: {
-        products: async ({ id }, args) => await ProductService.getProductsByCategory(id),
+        products: async ({ id }, args) => await ProductService.getAllProducts({ categoryID: id }),
     },
 
     Mutation: {

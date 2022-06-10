@@ -5,6 +5,7 @@ export const ProductTypeDefs = gql`
         id: ID!
         name: String!
         category: Category
+        status: String
         thumbnail: String!
         description: String!
         price: Int!
@@ -23,6 +24,7 @@ export const ProductTypeDefs = gql`
     }
 
     type Query {
+        listProducts(status: String!): [Product]
         products: [Product]
         product(id: ID!): Product
     }
