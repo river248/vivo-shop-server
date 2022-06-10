@@ -15,7 +15,8 @@ const createNew = async (data) => {
     return await Category.save()
 }
 
-const findAllCategories = async () => await Category.find()
+const findAllCategories = async (condition = null) =>
+    condition === null ? await Category.find() : await Category.find(condition)
 
 const findCategoryById = async (id) => await Category.findById(id)
 

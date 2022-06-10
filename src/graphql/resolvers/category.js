@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product'
 
 const CategoryResolvers = {
     Query: {
+        listCategories: async (parent, args) => await CategoryService.getAllCategories({ type: args.type }),
         categories: async () => await CategoryService.getAllCategories(),
         category: async (parent, args) => await CategoryService.getCategoryById(args.id),
     },
