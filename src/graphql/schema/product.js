@@ -1,10 +1,10 @@
 import { gql } from 'apollo-server-core'
 
-export const productTypeDefs = gql`
+export const ProductTypeDefs = gql`
     type Product {
         id: ID!
         name: String!
-        categoryID: String!
+        category: Category
         thumbnail: String!
         description: String!
         price: Int!
@@ -13,7 +13,6 @@ export const productTypeDefs = gql`
     }
 
     type Size {
-        id: ID!
         name: String!
         soldOut: Boolean
     }
@@ -29,9 +28,9 @@ export const productTypeDefs = gql`
     }
 
     type Mutation {
-        createNew(
+        createNewProduct(
             name: String
-            categoryID: String
+            categoryID: ID
             thumbnail: String
             description: String
             price: Int
