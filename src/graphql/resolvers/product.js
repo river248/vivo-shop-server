@@ -1,14 +1,19 @@
+import { CategoryService } from '../../services/category'
 import { ProductService } from '../../services/product'
 
-const productResolvers = {
+const ProductResolvers = {
     Query: {
         products: async () => await ProductService.getAllProducts(),
         product: async (parent, args) => await ProductService.getProductById(args.id),
     },
 
+    Product: {
+        category: async ({ categoryID }, args) => await CategoryService.getCategoryById(categoryID),
+    },
+
     Mutation: {
-        createNew: async (parent, args) => ProductService.createNew(args),
+        createNewProduct: async (parent, args) => ProductService.createNew(args),
     },
 }
 
-export default productResolvers
+export default ProductResolvers

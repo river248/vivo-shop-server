@@ -1,4 +1,5 @@
 import { merge } from 'lodash'
-import productResolvers from './product'
+import CategoryResolvers from './category'
+import ProductResolvers from './product'
 
-export const resolvers = merge(productResolvers)
+export const resolvers = merge(ProductResolvers, CategoryResolvers)
